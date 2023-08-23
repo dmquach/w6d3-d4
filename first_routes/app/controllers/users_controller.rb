@@ -16,7 +16,27 @@ class UsersController < ApplicationController
 
 
     def show
-        render json: params
+        render json: User.find_by(id: params[:id])
+    end
+
+    def update
+        user = User.find_by(id: params[:id])
+        if user.nil?
+            render json: ['no user found']
+        elsif user.update(user_params)
+            redirect_to user_url(user)
+        else
+            render json: user.errors.full_messages, status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+        user = User.find_by(id: params[:id])
+        if user.nil?
+            render json: ['no user found'], status: 404
+        else user.destroy
+            redirect_to user_url
+        end
     end
 
     def user_params
