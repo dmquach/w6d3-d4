@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # resources :users
 
   get '/users', to: 'users#index'
-  post '/users', to: 'user#create'
+  post '/users', to: 'users#create'
   get '/users/new', to: 'users#new'
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
   get 'users/:id', to: 'users#show', as: 'user'
