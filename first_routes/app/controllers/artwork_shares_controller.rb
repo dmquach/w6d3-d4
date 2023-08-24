@@ -12,10 +12,17 @@ class ArtworkSharesController < ApplicationController
 
     def destroy
         artwork_shares = ArtworkShare.find_by(id: params[:id])
+
         if artwork_shares.nil?
             render json: ['no artwork_shares found'], status: 404
         else artwork_shares.destroy
-            redirect_to artwork_shares_url
+
+            render json: ['deletion complete']
         end
+    end
+
+    private
+    def artwork_shares_params
+        params.require(:artwork_shares).permit(:artwork_id, :viewer_id)
     end
 end

@@ -4,7 +4,7 @@ class ArtworksController < ApplicationController
         # render json: artworks
         # debugger
         user = User.find_by(id: params[:user_id])
-        owned = user.artworks 
+        owned = user.artworks
         shared = user.shared_artworks
         render json: {artworks: owned, shared_artworks: shared}
     end
