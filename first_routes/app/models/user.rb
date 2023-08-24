@@ -15,12 +15,12 @@ class User < ApplicationRecord
     class_name: :Artwork,
     dependent: :destroy
 
-    has_many :artwork_shares,
+    has_many :artwork_shares, #shared artworks to user
     foreign_key: :viewer_id,
     class_name: :ArtworkShare,
-    dependent: :destoy
+    dependent: :destroy
 
-    has_many :shared_artworks,
+    has_many :shared_artworks, #users shared artwork to
     through: :artwork_shares,
     source: :artwork
 end
