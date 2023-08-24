@@ -52,4 +52,10 @@ comment3 = Comment.create(body: "Abbey did great", author_id: 1, artwork_id: 2)
 comment4 = Comment.create(body: "Amazing Paulo", author_id: 1, artwork_id: 3)
 comment5 = Comment.create(body: "Splendid Dylan", author_id: 1, artwork_id: 4)
 
+puts "Creating likes"
+like1 = Like.create(likeable_type: Comment, likeable_id: 1, liker_id: 2)
+like1 = Like.create(likeable_type: Comment, likeable_id: 2, liker_id: 2)
+like1 = Like.create(likeable_type: Artwork, likeable_id: 1, liker_id: 2)
+like1 = Like.create(likeable_type: Artwork, likeable_id: 2, liker_id: 2)
+
 puts "Finished"

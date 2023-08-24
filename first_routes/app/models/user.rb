@@ -31,4 +31,11 @@ class User < ApplicationRecord
     class_name: :Comment,
     inverse_of: :author,
     dependent: :destroy
+
+    has_many :likes,
+    foreign_key: :liker_id,
+    class_name: :Like,
+    inverse_of: :liker,
+    dependent: :destroy
+
 end

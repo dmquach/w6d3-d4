@@ -33,6 +33,8 @@ class Artwork < ApplicationRecord
     inverse_of: :artwork,
     dependent: :destroy
 
+    has_many :likes, as: :likeable
+
     def self.artworks_for_user_id(id)
         Artwork.left_joins(:artwork_shares)
         .where("artwork_shares.viewer_id = #{id} or artworks.artist_id = #{id}")
