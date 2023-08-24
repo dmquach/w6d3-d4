@@ -12,12 +12,11 @@ class ArtworkSharesController < ApplicationController
 
     def destroy
         artwork_shares = ArtworkShare.find_by(id: params[:id])
-
+        artwork_id = artwork_shares.dup
         if artwork_shares.nil?
             render json: ['no artwork_shares found'], status: 404
         else artwork_shares.destroy
-
-            render json: ['deletion complete']
+            render json: artwork_id
         end
     end
 
