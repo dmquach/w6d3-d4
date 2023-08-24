@@ -12,6 +12,7 @@
 class Artwork < ApplicationRecord
     validates :title, :artist_id, presence: true
     validates :image_url, presence: true, uniqueness: true
+    validates :artist_id, uniqueness: {scope: :title}
 
     belongs_to :artist,
     foreign_key: :artist_id,
